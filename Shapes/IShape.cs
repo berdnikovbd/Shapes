@@ -9,7 +9,7 @@ namespace Shapes
     /// <summary>
     /// Provides of geometry shapes functionality.
     /// </summary>
-    internal interface IShape
+    public interface IShape
     {
         /// <summary>
         /// Calculate area of shape.
