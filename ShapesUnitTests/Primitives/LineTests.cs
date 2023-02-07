@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 using Shapes.Primitives;
+using Shapes.Exceptions;
 
-namespace ShapesUnitTests
+namespace ShapesUnitTests.Primitives
 {
     public class LineTests
     {
@@ -21,7 +22,7 @@ namespace ShapesUnitTests
             {
                 var line = new Line(point, point);
             }
-            catch
+            catch (OverlapePointsException)
             {
                 Assert.True(true);
                 return;
