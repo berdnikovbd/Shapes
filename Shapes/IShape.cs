@@ -15,6 +15,6 @@ namespace Shapes
         /// Calculate area of shape.
         /// </summary>
         /// <returns>Shape's area</returns>
-        public float GetArea();
+        public double GetArea();
     }
 }
