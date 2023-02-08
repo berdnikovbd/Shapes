@@ -21,7 +21,12 @@ namespace Shapes.Extensions
         {
             List<double> sortedLineLengths = triangle.GetLines().Select(segment => segment.GetLength()).OrderBy(x => x).ToList();
 
-            return (sortedLineLengths[0] * sortedLineLengths[0] + sortedLineLengths[1] * sortedLineLengths[1]) == (sortedLineLengths[2] * sortedLineLengths[2]);
+            var firstPart = Math.Truncate((sortedLineLengths[0] * sortedLineLengths[0] + sortedLineLengths[1] * sortedLineLengths[1]) * 1e12) / 1e12;
+            var secondPart = Math.Truncate((sortedLineLengths[2] * sortedLineLengths[2]) * 1e12) / 1e12;
+
+            bool result = (firstPart - secondPart) <= Double.Epsilon;
+
+            return result;
         }
     }
 }

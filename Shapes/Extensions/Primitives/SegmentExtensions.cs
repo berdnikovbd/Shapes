@@ -103,9 +103,9 @@ namespace Shapes.Extensions.Primitives
         {
 
             // If any of lines is parallel for axis OX, other segment should be parallel for axis OX too.
-            if (mainSegment.StartPoint.X == mainSegment.EndPoint.X || otherSegment.StartPoint.X == mainSegment.EndPoint.X)
+            if (mainSegment.StartPoint.X == mainSegment.EndPoint.X || otherSegment.StartPoint.X == otherSegment.EndPoint.X)
             {
-                if (mainSegment.StartPoint.X == mainSegment.EndPoint.X  && otherSegment.StartPoint.X == mainSegment.EndPoint.X)
+                if (mainSegment.StartPoint.X == mainSegment.EndPoint.X  && otherSegment.StartPoint.X == otherSegment.EndPoint.X)
                 {
                     return true;
                 }

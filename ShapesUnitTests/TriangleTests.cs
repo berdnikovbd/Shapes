@@ -73,11 +73,35 @@ namespace ShapesUnitTests
         }
 
         [Fact]
-        public void GetArea()
+        public void GetRectangleTriangleArea()
         {
             Triangle triangle = Triangle.Create(1.5, 2.0, 2.5);
 
             const double excpectedResult = 1.5;
+
+            var result = triangle.GetArea();
+
+            Assert.True(Math.Abs(triangle.GetArea() - excpectedResult) <= Double.Epsilon);
+        }
+
+        [Fact]
+        public void GetAreaTest()
+        {
+            IShape triangle = Triangle.Create(3.0, 4.0, 2.0);
+
+            const double excpectedResult = 2.9047375096555625;
+
+            var result = triangle.GetArea();
+
+            Assert.True(Math.Abs(triangle.GetArea() - excpectedResult) <= Double.Epsilon);
+        }
+
+        [Fact]
+        public void GetAreaTest2()
+        {
+            IShape triangle = Triangle.Create(3.0, 3.0, 3.0);
+
+            const double excpectedResult = 3.897114317029974;
 
             var result = triangle.GetArea();
 
@@ -95,7 +119,7 @@ namespace ShapesUnitTests
 
             const double excpectedResult = 1.8628613500000029;
 
-            Triangle triangle = Triangle.Create(points[0], points[1], points[2]);
+            IShape triangle = Triangle.Create(points[0], points[1], points[2]);
 
             Assert.True(triangle.GetArea() - excpectedResult <= Double.Epsilon);
         }

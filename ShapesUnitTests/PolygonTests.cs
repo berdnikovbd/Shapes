@@ -26,7 +26,7 @@ namespace ShapesUnitTests
             {
                 Polygon polygon = new Mocks.PolygonMock(points.ToArray());
             }
-            catch (IntersectSegmentsException) 
+            catch (IntersectSegmentsException ex) 
             {
                 Assert.True(true);
                 return;
@@ -50,7 +50,7 @@ namespace ShapesUnitTests
             {
                 Polygon polygon = new Mocks.PolygonMock(points.ToArray());
             }
-            catch (OverlapePointsException)
+            catch (OverlapePointsException ex)
             {
                 Assert.True(true);
                 return;
@@ -162,7 +162,7 @@ namespace ShapesUnitTests
             points.Add(new Point(10.0, 10.0));
             points.Add(new Point(10.0, 0.0));
 
-            Polygon polygon = new Mocks.PolygonMock(points.ToArray());
+            IShape polygon = new Mocks.PolygonMock(points.ToArray());
 
             const double expectedResult = 100.0;
 
@@ -178,7 +178,7 @@ namespace ShapesUnitTests
             points.Add(new Point(15.0, -10.0));
             points.Add(new Point(-10.0, 10.0));
 
-            Polygon polygon = new Mocks.PolygonMock(points.ToArray());
+            IShape polygon = new Mocks.PolygonMock(points.ToArray());
 
             const double expectedResult = 2.5;
             Assert.True(Math.Abs(polygon.GetArea() - expectedResult) <= Double.Epsilon);
@@ -196,7 +196,7 @@ namespace ShapesUnitTests
             points.Add(new Point(0.0, 10.0));
             points.Add(new Point(4.0, 4.0));
 
-            Polygon polygon = new Mocks.PolygonMock(points.ToArray());
+            IShape polygon = new Mocks.PolygonMock(points.ToArray());
 
             const double expectedResult = 60.0;
             Assert.True(Math.Abs(polygon.GetArea() - expectedResult) <= Double.Epsilon);
