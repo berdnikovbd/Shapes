@@ -14,9 +14,15 @@ namespace Shapes
     public class Triangle : Polygon
     {
         /// <summary>
-        /// Contains vertexes of triangle.
+        /// Copy of vertexes of triangle.
         /// </summary>
-        public List<Point> Points { get => _points; }
+        /// <returns>
+        /// Copied vertexes of triangle.
+        /// </returns>
+        public List<Point> GetPointsCopy()
+        {
+            return new List<Point>(_points);
+        }
 
         /// <inheritdoc cref="Create(Point, Point, Point)"/>
         protected Triangle(Point first, Point second, Point third)

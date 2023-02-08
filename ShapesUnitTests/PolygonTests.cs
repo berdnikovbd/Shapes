@@ -201,7 +201,5 @@ namespace ShapesUnitTests
             const double expectedResult = 60.0;
             Assert.True(Math.Abs(polygon.GetArea() - expectedResult) <= Double.Epsilon);
         }
-
-
     }
 }
