@@ -5,49 +5,50 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Shapes.Exceptions;
+using Point = System.Drawing.Point;
 
 namespace Shapes.Primitives
 {
     /// <summary>
-    /// Represents an instance of line on plane between two points.
+    /// Represents an instance of segment on plane between two points.
     /// </summary>
-    public struct Line
+    public struct Segment
     {
         /// <summary>
-        /// First point property.
+        /// Start point property.
         /// </summary>
-        public Point First { get; init; }
+        public Point StartPoint { get; init; }
 
         /// <summary>
-        /// Second point property.
+        /// End point property.
         /// </summary>
-        public Point Second { get; init; }
+        public Point EndPoint { get; init; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Line"/>.
+        /// Initializes a new instance of <see cref="Segment"/>.
         /// </summary>
-        /// <param name="first">First point.</param>
-        /// <param name="second">Second point.</param>
+        /// <param name="start">Start point.</param>
+        /// <param name="end">End point.</param>
         /// <exception cref="OverlapePointsException">First and second points are equal.</exception>
-        public Line(Point first, Point second)
+        public Segment(Point start, Point end)
         {
-            First = first;
-            Second = second;
+            StartPoint = start;
+            EndPoint = end;
 
-            if (first.Equals(second))
+            if (start.Equals(end))
             {
                 throw new OverlapePointsException();
             }
         }
 
         /// <summary>
-        /// Calculate length of <see cref="Line"/>.
+        /// Calculate length of <see cref="Segment"/>.
         /// </summary>
-        /// <returns>Length between two <see cref="Point"/> of <see cref="Line"/>.
+        /// <returns>Length between two <see cref="Point"/> of <see cref="Segment"/>.
         /// </returns>
         public double GetLength()
         {
-            return Math.Sqrt((First.X - Second.X) * (First.X - Second.X) + (First.Y - Second.Y) * (First.Y - Second.Y)); 
+            return Math.Sqrt((StartPoint.X - EndPoint.X) * (StartPoint.X - EndPoint.X) + (StartPoint.Y - EndPoint.Y) * (StartPoint.Y - EndPoint.Y)); 
         }
     }
 }

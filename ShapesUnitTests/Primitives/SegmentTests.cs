@@ -10,17 +10,17 @@ using Shapes.Exceptions;
 
 namespace ShapesUnitTests.Primitives
 {
-    public class LineTests
+    public class SegmentTests
     {
         [Theory]
         [InlineData(1.0, 2.0)]
-        public void CreateLineShoudThrowException(double x1, double y1)
+        public void CreateLineShouldThrowException(double x1, double y1)
         {
             var point = new Point(x1, y1);
-
+            
             try
             {
-                var line = new Line(point, point);
+                var segment = new Segment(point, point);
             }
             catch (OverlapePointsException)
             {
@@ -33,15 +33,15 @@ namespace ShapesUnitTests.Primitives
 
         [Theory]
         [InlineData(1.0, 2.0, 2.0, 1.0, 1.4142135623730951)]
-        public void CalcLineLength(double x1, double y1, double x2, double y2, double resultLength)
+        public void CalcLineLength(double x1, double y1, double x2, double y2, double excpectedResult)
         {
             var firstPoint = new Point(x1, y1);
             var secondPoint = new Point(x2, y2);
 
-            var line = new Line(firstPoint, secondPoint);
-            var lineLength = line.GetLength();
+            var segment = new Segment(firstPoint, secondPoint);
+            var lineLength = segment.GetLength();
 
-            Assert.Equal(line.GetLength(), resultLength);
+            Assert.True(Math.Abs(lineLength - excpectedResult) <= Double.Epsilon);
         }
 
     }
