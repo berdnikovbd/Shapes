@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Shapes
 {
     /// <summary>
-    /// A <see langword="shape"/> where the <see cref="Segment"/> do not intersect.
+    /// Represents a <see langword="shape"/> where the <see cref="Segment"/> do not intersect.
     /// </summary>
     /// <remarks>
     /// Can be convex and non convex.
@@ -142,13 +142,13 @@ namespace Shapes
 
                 if (firstLine.IsParallel(creatingLine))
                 {
-                    throw new IntersectSegmentsException();
+                    throw new IntersectSegmentsException("Segments are intersect like line.");
                 }
             }
 
             if (checkingLinesForOverlape.Any(l => l.IsIntersect(creatingLine)))
             {
-                throw new IntersectSegmentsException();
+                throw new IntersectSegmentsException("New segment intersect one or more Polygon's segments.");
             }
             
             IsAbleForAddingPoint = _points.First() != point;
@@ -201,7 +201,7 @@ namespace Shapes
 
             if (_points.Count <= 2)
             {
-                throw new InvalidGeometryException();
+                throw new InvalidGeometryException("Can't create Polygon with only two points.");
             }
 
             IsAbleForAddingPoint = false;

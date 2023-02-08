@@ -8,12 +8,21 @@ using System.Threading.Tasks;
 
 namespace Shapes
 {
+    /// <summary>
+    /// Represents a <see cref="Triangle"/> shape model.
+    /// </summary>
     public class Triangle : Polygon
     {
         /// <summary>
-        /// Contains vertexes of triangle.
+        /// Copy of vertexes of triangle.
         /// </summary>
-        public List<Point> Points { get => _points; }
+        /// <returns>
+        /// Copied vertexes of triangle.
+        /// </returns>
+        public List<Point> GetPointsCopy()
+        {
+            return new List<Point>(_points);
+        }
 
         /// <inheritdoc cref="Create(Point, Point, Point)"/>
         protected Triangle(Point first, Point second, Point third)
@@ -36,6 +45,9 @@ namespace Shapes
         /// <exception cref="InvalidGeometryException">
         /// Throws when any of two triangle's sides more then last side.
         /// </exception>
+        /// <returns>
+        /// A new instance of <see cref="Triangle"/>.
+        /// </returns>
         public static Triangle Create(double firstSideLength, double secondSideLength, double thirdSideLength)
         {
             if (firstSideLength + secondSideLength <= thirdSideLength || secondSideLength + thirdSideLength <= firstSideLength || firstSideLength + thirdSideLength <= secondSideLength)
@@ -66,7 +78,7 @@ namespace Shapes
             }
 
             var ah = Math.Abs(ab * cosBacAngle);
-            var bh = ab * Math.Sin(Math.Acos(ah));
+            var bh = ab * Math.Sin(Math.Acos(cosBacAngle));
             var thirdPoint = new Point(ah, bh);
 
             return Create(firstPoint, secondPoint, thirdPoint);
@@ -84,6 +96,9 @@ namespace Shapes
         /// <exception cref="IntersectSegmentsException">
         /// Throws when one segment include all point. 
         /// </exception>
+        /// <returns>
+        /// A new instance of <see cref="Triangle"/>.
+        /// </returns>
         public static Triangle Create(Point first, Point second, Point third)
         {
             return new Triangle(first, second, third);
